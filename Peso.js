@@ -1,34 +1,29 @@
-//Cria referência ao form e elementos de resposta do programa
+//Cria referencial ao form
 
 const form = document.querySelector("form")
-const resp1 = document.querySelector("h3")
-const resp2 = document.querySelector("h4")
+const resp = document.querySelector("h3")
 
-//Cria um ouvinte
-
-
+//Ouvinte
 form.addEventListener("submit", (e) =>{
-e.preventDefault()                 //evita o envio do form
+e.preventDefault()
 
-const nome = form.inNome.value           //obtém o nome
-const sexo = Number(form.inMasculino.value) //obtém a primeira nota
-const sexo = Number(form.inFeminino.value) //obtém a segunda nota
-const altura = (nota1 + nota2)/2        //média das notas
-resp1.innerText = `Média das Notas ${media.toFixed(2)}`
+const nome = form.inNome.value
+const masculino = form.inMasculino.checked
+const altura = Number(form.inAltura.value)
 
-//Cria as condicionais
+//Calculando o peso ideal
+let peso
+ if (masculino) {
+     peso = 22 * Math.pow(altura, 2)
+ } else {
+     peso = 21 * Math.pow(altura, 2)
+ }
+  // apresenta a resposta
+  resp.innerText = `${nome} seu peso ideal é: ${peso.toFixed(3)}kg`
+})
 
-if(media >= 7) {
-        resp2.innerText = `Parabéns ${nome}! Você foi 
-aprovado(a)`
-        resp2.style.color = "blue"
-    } else if (media >=4) {
-        resp2.innerText = `Atenção ${nome}! Você esta de
-exame`
-        resp2.style.color = "green"
-    } else{
-        resp2.innerText = `Ops ${nome}! Você foi
-reprovado(a)`
-        resp2.style.color = "red"
-    }
+//segundo ouvinte. limpa o conteúdo de h3
+
+form.addEventListener("reset", (e) => {
+    resp.innerText = " "   //limpa o conteúdo de h3
 })
