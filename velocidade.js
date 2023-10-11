@@ -1,29 +1,22 @@
-//Cria referencial ao form
-
 const form = document.querySelector("form")
 const resp = document.querySelector("h3")
 
-//Ouvinte
-form.addEventListener("submit", (e) =>{
-e.preventDefault()
+//ouvinte
 
-const nome = form.inNome.value
-const masculino = form.inMasculino.checked
-const altura = Number(form.inAltura.value)
+form = addEventListener("submit", (e) =>{
+    e.preventDefault()
 
-//Calculando o peso ideal
-let peso
- if (masculino) {
-     peso = 22 * Math.pow(altura, 2)
- } else {
-     peso = 21 * Math.pow(altura, 2)
- }
-  // apresenta a resposta
-  resp.innerText = `${nome} seu peso ideal é: ${peso.toFixed(3)}kg`
-})
+    const permitida = Number(form.inPermitida.value)
+    const condutor = Number(form.inCondutor.value)
+    let leve = permitida + (permitida * 0,2)
 
-//segundo ouvinte. limpa o conteúdo de h3
+    if(condutor <= permitida){
+        resp.innerText = `Situação: Sem Multa`
 
-form.addEventListener("reset", (e) => {
-    resp.innerText = " "   //limpa o conteúdo de h3
+    } else if(condutor <= leve){
+        resp.innerText = `Situação: Multa Leve`
+
+    } else (
+        resp.innerText = `Situação: Multa Grave`
+    )
 })
