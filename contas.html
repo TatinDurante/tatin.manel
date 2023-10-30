@@ -7,9 +7,22 @@
     <link rel="stylesheet" href="css/estilos.css">
     <title>Programa Contas do Mês</title>
 </head>
+
 <body>
-    <img src="img/contas.jpg" alt="contas">
-    <h1>Programa Contas do Mês</h1>
-    <form> 
-        
-    </form>
+    <img src="img/contas.jpg" alt="Contas a Pagar" class="alta">
+        <h1>Programa Contas do Mês</h1>
+            <form> 
+                <p>Descrição da Conta:
+                <input type="text" id="inDescricao" required>
+                </p>
+                <p>Valor a Pagar R$:
+                <input type="number" min="" step="0.01" id="inValor" required>
+                </p>
+                <input type="submit" value="Registrar Conta">
+            </form>
+    <pre id="outResp1"></pre>
+    <pre id="outResp2"></pre>
+    <script src="contas.js"></script>
+
+</body>
+</html>
